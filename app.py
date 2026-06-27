@@ -1,5 +1,6 @@
 
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(
     page_title="Juan's Prediction Engine",
@@ -36,32 +37,25 @@ with tab1:
 
     st.subheader("Top Picks Today")
 
-    st.dataframe(
-        {
-            "Game":[
-                "Phillies @ Mets",
-                "Dodgers @ Padres",
-                "Twins @ Rockies"
-            ],
-            "Pick":[
-                "Phillies",
-                "Dodgers",
-                "Twins"
-            ],
-            "Grade":[
-                "A+",
-                "A",
-                "A+"
-            ],
-            "Confidence":[
-                "92%",
-                "87%",
-                "90%"
-            ]
-        },
-        use_container_width=True
-    )
+    picks = pd.read_csv("today_picks.csv")
 
+top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
+
+st.dataframe(
+    top_picks[[
+        "Game",
+        "Pick",
+        "Pick Win %",
+        "Vegas Win %",
+        "Value Edge",
+        "Bet Score",
+        "Model Edge",
+        "Grade",
+        "Away Pitcher",
+        "Home Pitcher"
+    ]],
+    use_container_width=True
+)
 with tab2:
 
     st.subheader("World Cup Predictor")
