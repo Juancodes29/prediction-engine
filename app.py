@@ -1,6 +1,10 @@
 
 import streamlit as st
 import pandas as pd
+picks = pd.read_csv("today_picks.csv")
+
+total_picks = len(picks)
+aplus_picks = len(picks[picks["Grade"].isin(["A++", "A+"])])
 
 st.set_page_config(
     page_title="Juan's Prediction Engine",
@@ -14,10 +18,10 @@ st.caption("MLB + World Cup Prediction Platform")
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric("Today's Picks", "15")
+     st.metric("Today's Picks", total_picks)
 
 with col2:
-    st.metric("A+ Picks", "2")
+    st.metric("A+ Picks", aplus_picks)
 
 with col3:
     st.metric("Model Record", "127-94")
@@ -37,7 +41,6 @@ with tab1:
 
     st.subheader("Top Picks Today")
 
-    picks = pd.read_csv("today_picks.csv")
 
 top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
 
