@@ -59,6 +59,22 @@ st.dataframe(
     ]],
     use_container_width=True
 )
+st.subheader("🔥 Value Bets")
+
+value_bets = picks[picks["Value Edge"] >= 5]
+
+st.dataframe(
+    value_bets[[
+        "Game",
+        "Pick",
+        "Pick Win %",
+        "Vegas Win %",
+        "Value Edge",
+        "Bet Score",
+        "Grade"
+    ]],
+    use_container_width=True
+)
 with tab2:
 
     st.subheader("World Cup Predictor")
