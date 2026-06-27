@@ -39,7 +39,7 @@ tab1, tab2, tab3 = st.tabs([
 
 with tab1:
     
-top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
+    top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
 
 best_pick = top_picks.sort_values("Bet Score", ascending=False).iloc[0]
 
@@ -61,7 +61,7 @@ with colD:
 
 st.divider()
 
-    st.subheader("Top Picks Today")
+st.subheader("Top Picks Today")
 
 st.dataframe(
     top_picks[[
