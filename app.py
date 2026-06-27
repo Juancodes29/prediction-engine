@@ -38,11 +38,30 @@ tab1, tab2, tab3 = st.tabs([
 ])
 
 with tab1:
+    
+    top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
+
+best_pick = top_picks.sort_values("Bet Score", ascending=False).iloc[0]
+
+st.markdown("### 🔥 Best Pick of the Day")
+
+colA, colB, colC, colD = st.columns(4)
+
+with colA:
+    st.metric("Pick", best_pick["Pick"])
+
+with colB:
+    st.metric("Grade", best_pick["Grade"])
+
+with colC:
+    st.metric("Bet Score", best_pick["Bet Score"])
+
+with colD:
+    st.metric("Win %", f'{best_pick["Pick Win %"]}%')
+
+st.divider()
 
     st.subheader("Top Picks Today")
-
-
-top_picks = picks[picks["Grade"].isin(["A++", "A+", "A"])]
 
 st.dataframe(
     top_picks[[
