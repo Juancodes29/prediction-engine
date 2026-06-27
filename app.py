@@ -14,20 +14,24 @@ st.set_page_config(
 
 st.title("⚾ Juan's Prediction Engine")
 st.caption("MLB + World Cup Prediction Platform")
+total_picks = len(picks)
+aplus_picks = len(picks[picks["Grade"].isin(["A++", "A+"])])
+a_picks = len(picks[picks["Grade"] == "A"])
+value_bets_count = len(picks[picks["Value Edge"] >= 5])
 
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-     st.metric("Today's Picks", total_picks)
+    st.metric("Today's Picks", total_picks)
 
 with col2:
-    st.metric("A+ Picks", aplus_picks)
+    st.metric("A+/A++ Picks", aplus_picks)
 
 with col3:
-    st.metric("Model Record", "127-94")
+    st.metric("A Picks", a_picks)
 
 with col4:
-    st.metric("Win Rate", "57.4%")
+    st.metric("Value Bets", value_bets_count)
 
 st.divider()
 
