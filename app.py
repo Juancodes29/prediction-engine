@@ -141,4 +141,4 @@ with tab3:
 
     st.line_chart(
         results.set_index("Date")["Win Rate"]
-)
+    )
