@@ -137,3 +137,8 @@ with tab3:
 
     st.subheader("Daily Results")
     st.dataframe(results, use_container_width=True)
+    st.subheader("📈 Win Rate Trend")
+
+    st.line_chart(
+        results.set_index("Date")["Win Rate"]
+)
