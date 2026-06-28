@@ -47,7 +47,7 @@ with tab1:
 
 best_pick = top_picks.sort_values("Bet Score", ascending=False).iloc[0]
 
-st.markdown("### 🔥 Best Pick of the Day")
+
 
 colA, colB, colC, colD = st.columns(4)
 
