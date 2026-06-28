@@ -70,6 +70,11 @@ st.success(
     f'{best_pick["Pick Win %"]}% win probability, and a {best_pick["Bet Score"]} bet score.'
 )
 
+st.info(
+    f"Today the model analyzed {total_picks} games, found {aplus_picks} elite picks, "
+    f"{a_picks} A-grade picks, and {value_bets_count} value bets."
+)
+
 st.divider()
 
 st.subheader("Top Picks Today")
