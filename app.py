@@ -108,9 +108,25 @@ with tab2:
 
 with tab3:
 
-    st.subheader("Performance")
+    st.subheader("📊 Model Results Tracker")
 
-    st.metric(
-        "Historical Accuracy",
-        "57.4%"
-    )
+    results = pd.read_csv("results.csv")
+
+    total_wins = results["Wins"].sum()
+    total_losses = results["Losses"].sum()
+    total_games = total_wins + total_losses
+    overall_win_rate = round((total_wins / total_games) * 100, 1)
+
+    colR1, colR2, colR3 = st.columns(3)
+
+    with colR1:
+        st.metric("Total Record", f"{total_wins}-{total_losses}")
+
+    with colR2:
+        st.metric("Overall Win Rate", f"{overall_win_rate}%")
+
+    with colR3:
+        st.metric("Days Tracked", len(results))
+
+    st.subheader("Daily Results")
+    st.dataframe(results, use_container_width=True)
