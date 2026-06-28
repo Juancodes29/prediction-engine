@@ -49,6 +49,9 @@ best_pick = top_picks.sort_values("Bet Score", ascending=False).iloc[0]
 
 st.markdown("### 🔥 Best Pick of the Day")
 
+confidence = best_pick["Pick Win %"] / 100
+st.progress(confidence)
+
 colA, colB, colC, colD = st.columns(4)
 
 with colA:
