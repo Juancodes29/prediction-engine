@@ -62,6 +62,13 @@ with colC:
 
 with colD:
     st.metric("Win %", f'{best_pick["Pick Win %"]}%')
+    
+    st.markdown("### 🏆 Lock of the Day")
+
+st.success(
+    f'{best_pick["Pick"]} is the strongest play today with a {best_pick["Grade"]} grade, '
+    f'{best_pick["Pick Win %"]}% win probability, and a {best_pick["Bet Score"]} bet score.'
+)
 
 st.divider()
 
